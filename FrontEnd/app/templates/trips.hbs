@@ -1,0 +1,22 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div class="navbar-brand">Travel Planner </div>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li>{{#link-to 'trips.index' }}Dashboard{{/link-to}}</li>
+        <li>{{#link-to 'trips.new'}}Add new trip{{/link-to}}</li>
+        <li>{{#link-to 'trips.report'}}Trip reports{{/link-to}}</li>
+        <li><a href="#" {{action 'logout'}}>Logout</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      {{outlet}}
+    </div>
+  </div>
+</div>

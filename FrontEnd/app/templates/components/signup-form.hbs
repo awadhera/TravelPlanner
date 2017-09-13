@@ -1,0 +1,42 @@
+<div class="wrapper">
+  <form class="form-signin" {{action "submit" on="submit"}}>
+    <h2 class="form-signin-heading">Sign up</h2>
+    <div class='form-group'>
+
+      {{input value=user.name class='form-control' placeholder="Name" autofocus=""}}
+    </div>
+    <div class='form-group'>
+      {{input value=user.email class='form-control' placeholder="Email address" focus-out=(action (mut showEmailError) true)}}
+      {{#if showEmailError}}
+        <div class="error">
+          {{v-get user 'email' 'message'}}
+        </div>
+      {{/if}}
+    </div>
+    <div class='form-group'>
+      {{input value=user.password class="form-control" type="password" placeholder="Password" focus-out=(action (mut showPasswordError) true)}}
+      {{#if showPasswordError}}
+        <div class="error">
+          {{v-get user 'password' 'message'}}
+        </div>
+      {{/if}}
+    </div>
+    <div class='form-group'>
+      {{input value=user.passwordConfirmation class="form-control" type="password" placeholder="Confirm Password" focus-out=(action (mut showPasswordConfirmationError) true)}}
+      {{#if showPasswordConfirmationError}}
+        <div class="error">
+          {{v-get user 'passwordConfirmation' 'message'}}
+        </div>
+      {{/if}}
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" disabled= {{v-get user 'isInvalid'}}>Submit</button>
+    <button {{action 'cancelSignup'}} class="btn btn-lg btn-primary btn-block">Cancel</button>
+    <div class='form-group'>
+      {{#if errorMessage}}
+        <div class="error">
+          {{errorMessage}}
+        </div>
+      {{/if}}
+    </div>
+  </form>
+</div>

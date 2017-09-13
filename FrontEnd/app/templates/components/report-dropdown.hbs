@@ -1,0 +1,33 @@
+<div class="form-group">
+  <label>Select an upcoming month:</label>
+  <select onchange= {{action "selectMonth" value="target.value"}} class="selectpicker">
+  {{#each dropdownValues as |oneValue|}}
+    <option value={{oneValue}}>{{oneValue}}</option>
+  {{/each}}
+</select>
+</div>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Destination</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Comment</th>
+        <th>Days till trip</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each tripArr as |onetripArr|}}
+        <tr>
+          <td>{{onetripArr.destination}}</td>
+          <td>{{onetripArr.startdate}}</td>
+          <td>{{onetripArr.enddate}}</td>
+          <td>{{onetripArr.comment}}</td>
+          <td>{{onetripArr.daystotrip}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+{{yield}}

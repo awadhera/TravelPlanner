@@ -1,0 +1,39 @@
+<h3 class="page-header text-center">New Trip</h3>
+<form class="form-signin">
+  <div class="form-group">
+    <label>Destination:</label>
+    {{input value=model.destination class='form-control'}}
+    <div class="error">
+      {{v-get model 'destination' 'message'}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Start Date:</label>
+    {{pikaday-input class='form-control' format="YYYY-MM-DD" readonly="readonly" value=model.startdate useUTC=true  onSelection=(action (mut model.startdate))}}
+    <div class="error">
+      {{v-get model 'startdate' 'message'}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label>End Date:</label>
+    {{pikaday-input class='form-control' format="YYYY-MM-DD" readonly="readonly" minDate=model.startdate value=model.enddate useUTC=true  onSelection=(action (mut model.enddate))}}
+    <div class="error">
+      {{v-get model 'enddate' 'message'}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Comment:</label>
+    {{input class='form-control' type="comment" value=model.comment}}
+  </div>
+  <div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" {{action 'saveTrip' model}} disabled={{v-get model 'isInvalid'}}>Add Trip</button>
+    <button {{action 'cancelTrip'}} class="btn btn-lg btn-primary btn-block">Cancel</button>
+  </div>
+  <div class='form-group'>
+    {{#if errorMessage}}
+      <div class="error">
+        {{errorMessage}}
+      </div>
+    {{/if}}
+  </div>
+</form>

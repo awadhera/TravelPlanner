@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <form class="form-signin" {{action "authenticate" on="submit"}}>
+    <h2 class="form-signin-heading">Login</h2>
+    {{validated-input model=this value=identification valuePath='email' placeholder='Email'}}
+    {{validated-input model=this value=password valuePath='password' placeholder='Password' type="password"}}
+    <button class="btn btn-lg btn-primary btn-block" type="submit" disabled= {{v-get this 'isInvalid'}}>Login</button>
+    <button {{action 'cancelLogin'}} class="btn btn-lg btn-primary btn-block">Cancel</button>
+    <div class='form-group'>
+      {{#if errorMessage}}
+        <div class="error">
+          {{errorMessage}}
+        </div>
+      {{/if}}
+    </div>
+  </form>
+</div>

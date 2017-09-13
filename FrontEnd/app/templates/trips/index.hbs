@@ -1,0 +1,33 @@
+<h3 class="page-header text-center">Dashboard</h3>
+{{#trip-filter filter=(action 'filterByDestination') as |trips|}}
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Destination</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Comment</th>
+        <th>Days till trip</th>
+        <th>Modify Trip</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each trips as |trip|}}
+        <tr>
+          <td>{{trip.destination}}</td>
+          <td>{{trip.startdate}}</td>
+          <td>{{trip.enddate}}</td>
+          <td>{{trip.comment}}</td>
+          <td>{{trip.daystotrip}}</td>
+          <td><div>
+            <button {{action 'editTrip' trip.id}} class="btn-primary">Edit</button>
+            <button {{action 'deleteTrip' trip}} class="btn-primary">Delete</button>
+          </div></td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+{{/trip-filter}}
+{{outlet}}
